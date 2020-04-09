@@ -19,7 +19,7 @@ def get_start_time(date, slot):
 
 
 cal = Calendar()
-with open('data.csv', 'rt') as csvfile:
+with open('../data.csv', 'rt') as csvfile:
     print("Reading file")
     reader = csv.reader(csvfile, delimiter=',', quotechar='|')
     n = -1
@@ -41,7 +41,7 @@ with open('data.csv', 'rt') as csvfile:
 
                 event.add('dtstart', start_time)
                 event.add('dtend',  start_time + timedelta(hours=2))
-                event.add('location', 'Registration URL:' + e['Registration'] )
+                event.add('location', e['Registration'] )
                 event.add('description', 'Host: ' + e['Host'] + "\nPlease refer to the registration URL for the connection details: " + e['Registration'])
                 print(event)
                 cal.add_component(event)
