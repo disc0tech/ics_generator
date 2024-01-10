@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from datetime import datetime, timedelta
 from icalendar import Calendar, Event
 import csv
@@ -19,7 +20,7 @@ def get_start_time(date, slot):
 
 
 cal = Calendar()
-with open('../data.csv', 'rt') as csvfile:
+with open('in.csv', 'rt') as csvfile:
     print("Reading file")
     reader = csv.reader(csvfile, delimiter=',', quotechar='|')
     n = -1
