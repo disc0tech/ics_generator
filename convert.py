@@ -20,6 +20,8 @@ def get_start_time(date, slot):
 
 
 cal = Calendar()
+cal.add('prodid', '-//Dragonfly//ISO_Meetingswg3//')
+cal.add('version', '2.0')
 with open('in.csv', 'rt') as csvfile:
     print("Reading file")
     reader = csv.reader(csvfile, delimiter=',', quotechar='|')
@@ -42,6 +44,8 @@ with open('in.csv', 'rt') as csvfile:
 
                 event.add('dtstart', start_time)
                 event.add('dtend',  start_time + timedelta(hours=2))
+                event.add('dtstamp', datetime.now())
+                event.add('uid', 'wg3'+str(start_time))
                 event.add('location', e['Registration'] )
                 event.add('description', 'Host: ' + e['Host'] + "\nPlease refer to the registration URL for the connection details: " + e['Registration'])
                 print(event)
